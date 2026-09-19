@@ -1,0 +1,11 @@
+# Dados operacionais e arquivos produzidos localmente
+DADOS/*.xlsm
+DADOS/*.xlsx
+web/dados.js
+web/selecao.js
+EXPORTADOS/
+
+# Arquivos temporários
+~$*
+Thumbs.db
+desktop.ini

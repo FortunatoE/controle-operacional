@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acompanhamento de Operações</title>
+<style>
+:root{--bg:#f5f8f9;--surface:#fff;--ink:#101424;--muted:#566073;--line:#e4e9ed;--blue:#049ce5;--red:#f70b10;--track:#e5e9eb;--shadow:0 4px 12px rgba(27,41,54,.09)}*{box-sizing:border-box}html,body{margin:0;background:var(--bg);font-family:"Segoe UI",Arial,sans-serif;color:var(--ink)}.page{max-width:1260px;margin:0 auto;padding:8px 10px 38px}.hero{min-height:100px;background:linear-gradient(110deg,#4b4744,#5d5854);color:#fff;padding:18px 28px;border-radius:12px;display:grid;grid-template-columns:286px 1fr 176px;align-items:center;gap:18px;box-shadow:var(--shadow)}.brand{display:flex;gap:12px;align-items:center;border-right:2px solid rgba(255,255,255,.65);padding-right:18px}.brand-mark{width:68px;height:60px;border-radius:50% 56% 50% 48%;background:linear-gradient(145deg,#11c642,#008b34);transform:rotate(-24deg);position:relative}.brand-mark:after{content:"";position:absolute;width:46px;height:18px;border-bottom:2px solid #aaff57;border-radius:50%;left:5px;top:23px;transform:rotate(-18deg)}.brand-name{font-size:26px;font-weight:700;color:#43c8ff;line-height:.9}.brand-name small{display:block;color:#a5da24;font-size:14px;margin-top:7px}.hero h1{margin:0;font-size:35px;line-height:1;letter-spacing:-1.3px}.hero p{margin:8px 0 0;color:#fff;font-size:18px}.hero-date{display:flex;align-items:center;gap:14px;font-size:21px;line-height:1.25}.calendar{font-size:35px}.controls,.summary{display:none}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:10px}.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 22px 16px;box-shadow:var(--shadow);min-height:360px}.card-head{display:block}.kicker{font-size:14px;color:var(--muted);font-weight:700;margin-bottom:2px}.op-name{font-size:32px;font-weight:900;margin:0;line-height:1.05}.pill{display:none}.main{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:12px;margin-top:10px}.donut-wrap{display:flex;justify-content:center}.donut{width:190px;height:190px;position:relative}.donut svg{width:100%;height:100%;transform:rotate(-90deg)}.donut circle{fill:none;stroke-width:28}.donut .base{stroke:var(--red)}.donut .done{stroke:var(--blue)}.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.donut-center strong{font-size:39px;line-height:1}.donut-center span{font-size:14px;font-weight:700;margin-top:7px}.callout{position:absolute;font-size:24px;font-weight:800}.callout.done{right:-20px;top:17px;color:var(--blue)}.callout.pending{left:-27px;top:30px;color:var(--red)}.metrics{display:grid;gap:8px}.metric{display:grid;grid-template-columns:24px 1fr;column-gap:16px;align-items:start}.dot{width:24px;height:24px;border-radius:6px;margin-top:6px}.dot.blue{background:var(--blue)}.dot.red{background:var(--red)}.dot.gray{background:#adb8bb}.metric small{display:block;color:#202637;font-size:22px;line-height:1}.metric strong{display:block;font-size:36px;line-height:1.05;letter-spacing:-1px}.metric .pct{display:none}.bar{height:18px;border-radius:6px;background:var(--track);overflow:hidden;margin-top:8px}.bar span{display:block;height:100%;background:linear-gradient(90deg,#079bdf,#00a9ef);border-radius:6px}.footer{display:flex;justify-content:space-between;margin-top:10px;color:#141a2d;font-size:19px}.footer b{font-weight:900}.empty{grid-column:1/-1;background:#fff;border:1px dashed #bcc7c0;border-radius:22px;padding:50px;text-align:center;color:#7c8580}@media(max-width:900px){.hero{grid-template-columns:1fr}.brand{border:0}.cards{grid-template-columns:1fr}.main{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="page" id="dashboardRoot">
+<header class="hero">
+<div class="brand">
+<img class="brand-logo" src="./logoboaesperanca.png" alt="Boa Esperança Agropecuária">
+</div>
+<div>
+<h1>ACOMPANHAMENTO DE OPERAÇÕES</h1>
+<p id="heroSub">Carregando dados locais...</p>
+</div>
+<div class="hero-date">
+<span class="calendar">▣</span>
+<span id="heroDate">—</span>
+</div>
+</header>
+<section class="controls" id="controls">
+<select id="unitSelect">
+</select>
+<input id="searchInput">
+<select id="sortSelect">
+<option value="sheet">Ordem dos dados</option>
+<option value="progressAsc">Menor execução</option>
+<option value="progressDesc">Maior execução</option>
+<option value="pendingDesc">Maior pendência</option>
+<option value="name">Nome da operação</option>
+</select>
+<button id="reloadBtn">Recarregar</button>
+<a id="downloadBtn" href="#" role="button">PNG</a>
+</section>
+<section class="summary" id="summary">
+</section>
+<main class="cards" id="cards">
+</main>
+</div>
+<script charset="windows-1252" src="./dados.js">
+</script>
+<script src="./selecao.js">
+</script>
+<script src="./logo-embed.js">
+</script>
+<script src="./app.js">
+</script>
+</body>
+</html>
