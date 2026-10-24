@@ -1,7 +1,9 @@
 (() => {
   'use strict';
 
-  const DATA = window.DASHBOARD_DATA || { registros: [], geradoEm: '' };
+  const qs = new URLSearchParams(location.search);
+  const DEMO = qs.get('demo') === '1';
+  const DATA = (DEMO ? window.DASHBOARD_DEMO_DATA : window.DASHBOARD_DATA) || { registros: [], geradoEm: '' };
   const FARM = String(DATA.fazenda || DATA.codigoFazenda || '').trim();
   const logoStyle = document.createElement('style');
   logoStyle.textContent = '.brand-logo{display:block;width:260px;max-height:74px;object-fit:contain;object-position:left center;padding:3px}.brand{min-width:286px}.controls{display:flex!important;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid #e4e9ed;border-radius:12px;padding:10px 14px;margin:10px 0;box-shadow:0 2px 7px rgba(27,41,54,.05)}.controls select,.controls input,.controls button{height:36px;border:1px solid #d8e0e4;border-radius:7px;background:#fff;padding:0 10px;font:14px "Segoe UI",Arial,sans-serif}.controls input{min-width:220px}.controls button{font-weight:700;cursor:pointer}.calendar svg{display:block;width:34px;height:34px;stroke:#fff;fill:none;stroke-width:2.4}.donut .divider{stroke:#fff;stroke-width:3.2}.callout.done{right:-58px!important}.callout.pending{left:-62px!important}.hero-date{white-space:pre-line}.capture-mode .controls{display:none!important}.capture-mode .page{max-width:none;width:1400px;padding:0 10px 28px}@media(max-width:900px){.brand-logo{width:230px}.controls input{min-width:160px}}';
@@ -13,7 +15,6 @@
   downloadStyle.textContent = '.controls a{height:36px;box-sizing:border-box;border:1px solid #d8e0e4;border-radius:7px;background:#fff;padding:0 10px;font:700 14px "Segoe UI",Arial,sans-serif;display:inline-flex;align-items:center;cursor:pointer;text-decoration:none;color:#101424}';
   document.head.appendChild(downloadStyle);
   document.querySelector('.brand-logo').src = window.LOGO_EXPORT_DATA_URI || './logoboaesperanca-branca.png';
-  const qs = new URLSearchParams(location.search);
   const captureMode = window.DASHBOARD_CAPTURE === true || qs.get('capture') === '1';
   if (captureMode) document.body.classList.add('capture-mode');
 
@@ -32,7 +33,7 @@
   const clamp = (v) => Math.max(0, Math.min(1, Number(v) || 0));
   const fmtHa = (v) => new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 }).format(num(v)) + ' ha';
   const fmtPct = (v) => Math.round(clamp(v) * 100) + '%';
-  const subtitle = () => `${FARM ? `FAZENDA: ${FARM} • ` : ''}Atualizado em ${DATA.geradoEm || '—'}`;
+  const subtitle = () => `${DEMO ? 'MODO DEMONSTRAÇÃO • ' : ''}${FARM ? `FAZENDA: ${FARM} • ` : ''}Atualizado em ${DATA.geradoEm || '—'}`;
 
   function getUnits() {
     return [...new Set(DATA.registros.map(r => norm(r.unidade)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'));

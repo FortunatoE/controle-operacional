@@ -4,6 +4,7 @@ DADOS/*.xlsx
 web/dados.js
 web/selecao.js
 EXPORTADOS/
+docs/referencias/
 
 # Arquivos temporários
 ~$*

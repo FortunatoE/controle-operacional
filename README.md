@@ -162,6 +162,16 @@ window.DASHBOARD_DATA = {
 
 O percentual executado é calculado por realizado / planejado. O valor é limitado entre 0 e 1 para evitar dados visuais inválidos.
 
+## Modo demonstração
+
+Para apresentar o painel sem expor a realidade operacional, abra o arquivo index.html com o parâmetro demo=1:
+
+~~~
+file:///.../web/index.html?demo=1
+~~~
+
+Esse modo usa web/dados.demo.js, com fazenda, operações, hectares e talhões fictícios. O cabeçalho exibe MODO DEMONSTRAÇÃO e o fluxo operacional padrão continua usando web/dados.js.
+
 ## Exportação PNG
 
 Existem dois modos:
